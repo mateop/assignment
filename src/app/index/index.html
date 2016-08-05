@@ -1,0 +1,8 @@
+<div>
+    <a ui-sref="create">Create</a>
+</div>
+<div>
+    <div ng-repeat="item in vm.list">
+        <div>{{::item.user.firstName}} {{::item.user.lastName}} {{::item.user.email}}</div>
+    </div>
+</div>
