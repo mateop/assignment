@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('assignment.core').factory('localStorage', localStorage);
+    angular.module('app.core').factory('localStorage', localStorage);
 
     /** @ngInject */
     function localStorage($window) {

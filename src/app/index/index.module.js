@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('assignment.index', [])
+    angular.module('app.index', [])
         .config(config);
 
     /** @ngInject */

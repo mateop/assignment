@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('assignment.create', [])
+    angular.module('app.create', [])
         .config(config);
 
     /** @ngInject */

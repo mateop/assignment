@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('assignment.create').factory('createService', createService);
+    angular.module('app.create').factory('createService', createService);
 
     /** @ngInject */
     function createService(localStorage) {

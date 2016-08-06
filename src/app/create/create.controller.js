@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('assignment.create').controller('CreateController', createController);
+    angular.module('app.create').controller('CreateController', createController);
 
     /** @ngInjecct */
     function createController(createService, $state, $scope) {

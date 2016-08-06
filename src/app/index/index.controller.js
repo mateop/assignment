@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('assignment.index').controller('IndexController', indexCtrl);
+    angular.module('app.index').controller('IndexController', indexCtrl);
 
     /** @ngInjecct */
     function indexCtrl(localStorage) {

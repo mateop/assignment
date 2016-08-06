@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    angular.module('assignment.create').controller('SuccessController', successController);
+    angular.module('app.create').controller('SuccessController', successController);
 
     function successController($state, $stateParams) {
         if (!$stateParams.creationComplete) {
