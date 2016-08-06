@@ -1,72 +1,72 @@
-<div ng-show="vm.step == 0">
-    <form name="step1" novalidate>
-        <p>
-            <label for="firstName">First Name: </label>
-            <input type="text" ng-model="vm.userInput.user.firstName" id="firstName" required>
-        </p>
-        <p>
-            <label for="lastName">Last Name: </label>
-            <input type="text" ng-model="vm.userInput.user.lastName" id="lastName" required>
-        </p>
-        <p>
-            <label for="email">email: </label>
-            <input type="email" ng-model="vm.userInput.user.email" id="email" required>
-        </p>
-        <div>
-            <button ng-click="vm.nextStep()" ng-disabled="step1.$invalid">Next step</button>
-        </div>
-    </form>
+<div class="create">
+    <div ng-show="vm.step == 0" class="step">
+        <form name="step1" novalidate>
+            <p>
+                <label for="firstName">First Name: </label>
+                <input type="text" ng-model="vm.userInput.user.firstName" id="firstName" required>
+            </p>
+            <p>
+                <label for="lastName">Last Name: </label>
+                <input type="text" ng-model="vm.userInput.user.lastName" id="lastName" required>
+            </p>
+            <p>
+                <label for="email">email: </label>
+                <input type="email" ng-model="vm.userInput.user.email" id="email" required>
+            </p>
+            <div>
+                <button ng-click="vm.nextStep()" ng-disabled="step1.$invalid">Next step</button>
+            </div>
+        </form>
+    </div>
+    <div ng-show="vm.step == 1" class="step">
+        <form name="step2" novalidate>
+            <p>
+                <label for="carMake">Car make: </label>
+                <input type="text" ng-model="vm.userInput.car.make" id="carMake" required>
+            </p>
+            <p>
+                <label for="carModel">Care Model: </label>
+                <input type="text" ng-model="vm.userInput.car.model" id="carModel" required>
+            </p>
+            <div>
+                <button ng-click="vm.previousStep()">Previous step</button>
+                <button ng-click="vm.nextStep()" ng-disabled="step2.$invalid">Next step</button>
+            </div>
+        </form>
+    </div>
+    <div ng-show="vm.step == 2" class="step">
+        <form name="step3" novalidate>
+            <p>
+                <label for="ccNumber">Credit card number: </label>
+                <input type="text"
+                       pattern="[0-9]{13,16}"
+                       ng-model="vm.userInput.cc.number"
+                       id="ccNumber"
+                       required>
+            </p>
+            <p>
+                <label for="ccExMonth">Expiration Month: </label>
+                <input type="number"
+                       ng-model="vm.userInput.cc.expirationMonth"
+                       min="1"
+                       max="12"
+                       step="1"
+                       id="ccExMonth"
+                       required>
+            </p>
+            <p>
+                <label for="ccExYear">Expiration Year: </label>
+                <input type="number"
+                       ng-model="vm.userInput.cc.expirationYear"
+                       min="2016"
+                       step="1"
+                       id="ccExYear"
+                       required>
+            </p>
+            <div>
+                <button ng-click="vm.previousStep()">Previous step</button>
+                <button ng-click="vm.submit()" ng-disabled="step3.$invalid">Submit</button>
+            </div>
+        </form>
+    </div>
 </div>
-<div ng-show="vm.step == 1">
-    <form name="step2" novalidate>
-        <p>
-            <label for="carMake">Car make: </label>
-            <input type="text" ng-model="vm.userInput.car.make" id="carMake" required>
-        </p>
-        <p>
-            <label for="carModel">Care Model: </label>
-            <input type="text" ng-model="vm.userInput.car.model" id="carModel" required>
-        </p>
-        <div>
-            <button ng-click="vm.previousStep()">Previous step</button>
-            <button ng-click="vm.nextStep()" ng-disabled="step2.$invalid">Next step</button>
-        </div>
-    </form>
-</div>
-<div ng-show="vm.step == 2">
-    <form name="step3" novalidate>
-        <p>
-            <label for="ccNumber">Credit card number: </label>
-            <input type="text"
-                   pattern="[0-9]{13,16}"
-                   ng-model="vm.userInput.cc.number"
-                   id="ccNumber"
-                   required>
-        </p>
-        <p>
-            <label for="ccExMonth">Expiration Month: </label>
-            <input type="number"
-                   ng-model="vm.userInput.cc.expirationMonth"
-                   min="1"
-                   max="12"
-                   step="1"
-                   id="ccExMonth"
-                   required>
-        </p>
-        <p>
-            <label for="ccExYear">Expiration Year: </label>
-            <input type="number"
-                   ng-model="vm.userInput.cc.expirationYear"
-                   min="2016"
-                   step="1"
-                   id="ccExYear"
-                   required>
-        </p>
-        <div>
-            <button ng-click="vm.previousStep()">Previous step</button>
-            <button ng-click="vm.submit()" ng-disabled="step3.$invalid">Submit</button>
-        </div>
-    </form>
-</div>
-
-<pre><code>{{vm.userInput | json}}</code></pre>

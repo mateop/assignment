@@ -1,8 +1,16 @@
 <div>
-    <a ui-sref="create">Create</a>
+    <a ui-sref="create" class="signup">SIGN UP</a>
 </div>
-<div>
-    <div ng-repeat="item in vm.list">
-        <div>{{::item.user.firstName}} {{::item.user.lastName}} {{::item.user.email}}</div>
+<div class="index">
+    <div>
+        <div ng-repeat="item in vm.list" class="item">
+            <h3>{{::item.user.firstName}} {{::item.user.lastName}}</h3>
+            <div>
+                <small>{{::item.user.email}}</small>
+            </div>
+            <hr>
+            <p>Make: {{::item.car.make}} Model: {{::item.car.model}}</p>
+            <p>Card: {{::item.cc.number}} expires on {{::item.cc.expirationMonth}}/{{::item.cc.expirationYear}}</p>
+        </div>
     </div>
 </div>
