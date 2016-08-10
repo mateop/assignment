@@ -13,6 +13,8 @@
         vm.step = 0;
         vm.makers = [];
 
+        vm.years = [2016, 2017, 2018, 2019, 2020];
+
         vm.nextStep = nextStep;
         vm.previousStep = previousStep;
         vm.submit = submit;
