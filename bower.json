@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "dependencies": {
     "angular-ui-router": "~0.2.15",
-    "angular": "~1.5.3"
+    "angular": "~1.5.3",
+    "angular-material": "^1.0.9"
   },
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "resolutions": {
     "angular": "~1.5.3"
   }

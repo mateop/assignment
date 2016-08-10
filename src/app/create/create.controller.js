@@ -4,13 +4,14 @@
     angular.module('app.create').controller('CreateController', createController);
 
     /** @ngInjecct */
-    function createController(createService, $state, $scope) {
+    function createController(createService, $state, $scope, $log) {
         var vm = this;
         vm.userInput = {};
         vm.userInput.user = {};
         vm.userInput.car = {};
         vm.userInput.cc = {};
         vm.step = 0;
+        vm.makers = [];
 
         vm.nextStep = nextStep;
         vm.previousStep = previousStep;
@@ -24,6 +25,7 @@
         function activate() {
             loadStoredData();
             registerInputWatcher();
+            fetchMakers()
         }
 
         function loadStoredData() {
@@ -56,6 +58,15 @@
 
         function previousStep() {
             vm.step--;
+        }
+
+        function fetchMakers() {
+            createService.fetchMakers()
+                .then(function (data) {
+                    vm.makers = data;
+                }, function (err) {
+                    $log.error(err);
+                });
         }
 
         $scope.$on('$destroy', function () {

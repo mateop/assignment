@@ -1,72 +1,100 @@
-<div class="create">
-    <div ng-show="vm.step == 0" class="step">
-        <form name="step1" novalidate>
-            <p>
-                <label for="firstName">First Name: </label>
-                <input type="text" ng-model="vm.userInput.user.firstName" id="firstName" required>
-            </p>
-            <p>
-                <label for="lastName">Last Name: </label>
-                <input type="text" ng-model="vm.userInput.user.lastName" id="lastName" required>
-            </p>
-            <p>
-                <label for="email">email: </label>
-                <input type="email" ng-model="vm.userInput.user.email" id="email" required>
-            </p>
-            <div>
-                <button ng-click="vm.nextStep()" ng-disabled="step1.$invalid">Next step</button>
+<div class="create" layout="column" layout-align="start center">
+    <md-card ng-show="vm.step === 0" layout-padding>
+        <form name="step1" novalidate layout="column">
+            <md-input-container>
+                <label>First Name: </label>
+                <input type="text" ng-model="vm.userInput.user.firstName" name="firstName" required>
+                <div ng-messages="step1.firstName.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Last Name: </label>
+                <input type="text" ng-model="vm.userInput.user.lastName" name="lastName" required>
+                <div ng-messages="step1.lastName.$error">
+                    <div ng-message="required">This is required!</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>email: </label>
+                <input type="email" ng-model="vm.userInput.user.email" name="email" required>
+                <div ng-messages="step1.email.$error">
+                    <div ng-message="required">This is required!</div>
+                    <div ng-message="email">Your email address is invalid</div>
+                </div>
+            </md-input-container>
+            <div layout="row" layout-align="end center">
+                <md-button ng-click="vm.nextStep()" ng-disabled="step1.$invalid">Next step</md-button>
             </div>
         </form>
-    </div>
-    <div ng-show="vm.step == 1" class="step">
-        <form name="step2" novalidate>
-            <p>
-                <label for="carMake">Car make: </label>
-                <input type="text" ng-model="vm.userInput.car.make" id="carMake" required>
-            </p>
-            <p>
-                <label for="carModel">Care Model: </label>
-                <input type="text" ng-model="vm.userInput.car.model" id="carModel" required>
-            </p>
-            <div>
-                <button ng-click="vm.previousStep()">Previous step</button>
-                <button ng-click="vm.nextStep()" ng-disabled="step2.$invalid">Next step</button>
+    </md-card>
+    <md-card ng-show="vm.step === 1" layout-padding>
+        <form name="step2" novalidate layout="column">
+            <md-input-container>
+                <label>Car make:</label>
+                <md-select ng-model="vm.userInput.car.make" required name="carMaker">
+                    <md-option ng-value="maker" ng-repeat="maker in vm.makers">{{ maker }}</md-option>
+                </md-select>
+                <div ng-messages="step2.carMaker.$error">
+                    <div ng-message="required">Please select a car maker</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Care Model: </label>
+                <input type="text" ng-model="vm.userInput.car.model" required name="cardModel">
+                <div ng-messages="step2.carModel.$error">
+                    <div ng-message="required">Please select a car model</div>
+                </div>
+            </md-input-container>
+            <div layout="row" layout-align="space-between center">
+                <md-button ng-click="vm.previousStep()">Previous step</md-button>
+                <md-button ng-click="vm.nextStep()" ng-disabled="step2.$invalid">Next step</md-button>
             </div>
         </form>
-    </div>
-    <div ng-show="vm.step == 2" class="step">
-        <form name="step3" novalidate>
-            <p>
-                <label for="ccNumber">Credit card number: </label>
+    </md-card>
+    <md-card ng-show="vm.step === 2" layout-padding>
+        <form name="step3" novalidate layout="column">
+            <md-input-container>
+                <label>Credit card number: </label>
                 <input type="text"
                        pattern="[0-9]{13,16}"
                        ng-model="vm.userInput.cc.number"
-                       id="ccNumber"
+                       name="ccn"
                        required>
-            </p>
-            <p>
-                <label for="ccExMonth">Expiration Month: </label>
+                <div ng-messages="step3.ccn.$error">
+                    <div ng-message-exp="['pattern', 'required']">cc number invalid</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Expiration Month: </label>
                 <input type="number"
                        ng-model="vm.userInput.cc.expirationMonth"
                        min="1"
                        max="12"
                        step="1"
-                       id="ccExMonth"
+                       name="expirationMonth"
                        required>
-            </p>
-            <p>
-                <label for="ccExYear">Expiration Year: </label>
+                <div ng-messages="step3.expirationMonth.$error">
+                    <div ng-message-exp="['min','max', 'required']">Please input a valid month</div>
+                </div>
+            </md-input-container>
+            <md-input-container>
+                <label>Expiration Year: </label>
                 <input type="number"
                        ng-model="vm.userInput.cc.expirationYear"
                        min="2016"
+                       max="2030"
                        step="1"
-                       id="ccExYear"
+                       name="expirationYear"
                        required>
-            </p>
-            <div>
-                <button ng-click="vm.previousStep()">Previous step</button>
-                <button ng-click="vm.submit()" ng-disabled="step3.$invalid">Submit</button>
+                <div ng-messages="step3.expirationYear.$error">
+                    <div ng-message-exp="['min','max', 'required']">Please input a valid year</div>
+                </div>
+            </md-input-container>
+            <div layout="row" layout-align="space-between center">
+                <md-button ng-click="vm.previousStep()">Previous step</md-button>
+                <md-button ng-click="vm.submit()" ng-disabled="step3.$invalid">Submit</md-button>
             </div>
         </form>
-    </div>
+    </md-card>
 </div>

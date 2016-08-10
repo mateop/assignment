@@ -1,16 +1,17 @@
 <div>
-    <a ui-sref="create" class="signup">SIGN UP</a>
+    <md-button ui-sref="create" class="md-raised">SIGN UP</md-button>
 </div>
-<div class="index">
-    <div>
-        <div ng-repeat="item in vm.list" class="item">
-            <h3>{{::item.user.firstName}} {{::item.user.lastName}}</h3>
-            <div>
-                <small>{{::item.user.email}}</small>
-            </div>
-            <hr>
-            <p>Make: {{::item.car.make}} Model: {{::item.car.model}}</p>
+<div layout="column" layout-align="start center">
+    <md-card ng-repeat="item in vm.list">
+        <md-card-header>
+            <md-card-header-text>
+                <span class="md-headline">{{::item.user.firstName}} {{::item.user.lastName}}</span>
+                <span class="md-subhead">{{::item.user.email}}</span>
+            </md-card-header-text>
+        </md-card-header>
+        <md-card-content>
+            <p>Make: <b>{{::item.car.make}}</b> Model: <b>{{::item.car.model}}</b></p>
             <p>Card: {{::item.cc.number}} expires on {{::item.cc.expirationMonth}}/{{::item.cc.expirationYear}}</p>
-        </div>
-    </div>
+        </md-card-content>
+    </md-card>
 </div>
